@@ -19,13 +19,13 @@ If all of these components are present, the string is considered a valid email a
 
 ## Table of Contents
 
-- [Regex Example](#Regex-Example)
-- [Regex Components Defined](#quantifiers)
+- [Regex Example](#regex-example)
+- [Regex Components Defined](#regex-components-defined)
 - [Position Anchors](#position-anchors)
-- [Grouping/Capturing](#grouping-and-capturing)
+- [Quantifiers](#quantifiers)
+- [Capturing Group](#capturing-group)
 - [Bracket Expressions](#bracket-expressions)
 - [Character Classes](#character-classes)
-- [The OR Operator](#the-or-operator)
 - [Flags](#flags)
 - [Character Escapes](#character-escapes)
 ---
@@ -44,24 +44,29 @@ The second section, ```([\da-z\.-]+)``` specifies that one or more digits, lower
 The third section, ```([a-z\.]{2,6})``` specifies that two to six alphanumeric characters or periods must be present.
 
 ---
+# Regex Components Defined
 
 ## Position Anchors
+The anchors used in this regular expression for validating an email address begins with a string anchor ```(^)```  and the end of the string is denoted with ```($)```.
 
 ## Quantifiers
+Quantifiers in this regular expression include the plus ```(+) ```operator, which will connect the user's email name, email service, and .com. Another quantifier is ```{2,6}```, which will allow a match range of two to six characters for the character set of ```[a-z\.]```.
 
-## Grouping/Capturing
+## Capturing Group
+The first capturing group in this expression is ```([a-z0-9_\.-]+)```, which matches the user's email name. The second capturing group is ```([\da-z\.-]+)``` which will match the email service. The last capturing group is ```([a-z\.]{2,6})``` to capture the .com.
 
 ## Bracket Expressions
+Bracket expressions for email validation include the character set of ```[a-z0-9_\.-]```, which matches any letter a-z (case sensitive) and any character 0-9, as well as the characters "_", "-", and ".". The set of ```[\da-z\.-]``` matches a single digit from 0-9, any character a-z (case sensitive), and the characters "." and "-". The set of [a-z\.] matches any character a-z (case sensitive) and the character ".".
 
 ## Character Classes
+The character class in this expression is ```\d```, which matches a single digit from 0-9. It will only match a single digit such as "4", but not "44".
 
-## The OR Operator
 
 ## Flags
 A flag is an optional parameter to a regex that modifies its behavior of searching. A flag changes the default searching behavior of a regular expression. It makes a regex search in a different way. A flag is denoted using a single lowercase alphabetic character.
 
 ## Character Escapes
-The \ is known as the escape code, which restore the original literal meaning of the following character. Similarly, * , + , ? (occurrence indicators), ^ , $ (position anchors) have special meaning in regex. You need to use an escape code to match with these characters.
+The ``` \ ``` is known as the escape code, which restore the original literal meaning of the following character. Similarly, * , + , ? (occurrence indicators), ^ , $ (position anchors) have special meaning in regex. You need to use an escape code to match with these characters.
 
 ---
 ## Author:
